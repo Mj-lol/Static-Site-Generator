@@ -1,0 +1,117 @@
+[
+    {
+        "label": "*",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLNode",
+        "kind": 6,
+        "importPath": "src.htmlnode",
+        "description": "src.htmlnode",
+        "peekOfCode": "class HTMLNode:\n    def __init__(self, tag:str=None, value:str=None, children:list =None, props:dict=None) -> None:\n        self.tag = tag\n        self.value = value\n        self.children = children\n        self.props = props\n    def __eq__(self, other: object) -> bool:\n            return (self.tag == other.tag and\n            self.value == other.value and\n            self.children == other.children and",
+        "detail": "src.htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def main():\n    node = TextNode(\"This is a text node\", text_type_bold, \"https://www.boot.dev\")\n    print(node)\nmain()",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "TestTextNode",
+        "kind": 6,
+        "importPath": "src.test_textnode",
+        "description": "src.test_textnode",
+        "peekOfCode": "class TestTextNode(unittest.TestCase):\n    def test_eq(self):\n        node = TextNode(\"This is a text node\", \"bold\")\n        node2 = TextNode(\"This is a text node\", \"bold\")\n        self.assertEqual(node, node2)\n    def test_nodes_with_identical_properties_are_equal(self):\n        # Arrange\n        text = 'Sample text'\n        text_type = 'bold'\n        url = 'http://example.com'",
+        "detail": "src.test_textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextNode",
+        "kind": 6,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "class TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:\n        return f\"TextNode({self.text}, {self.text_type}, {self.url})\"",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_text",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_text = \"text\"\ntext_type_bold = \"bold\"\ntext_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_bold",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_bold = \"bold\"\ntext_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_italic",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_code",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_link",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_type_image",
+        "kind": 5,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "text_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:\n        return f\"TextNode({self.text}, {self.text_type}, {self.url})\"",
+        "detail": "src.textnode",
+        "documentation": {}
+    }
+]
