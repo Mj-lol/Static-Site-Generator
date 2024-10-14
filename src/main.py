@@ -51,21 +51,36 @@ def generate_page(fro, template, to):
         f.write(full_html)
 
 
+def generate_pages_recursive(content_dir, template_path, public_dir):
+    if not os.path.exists(public_dir):
+        os.makedirs(public_dir)
+
+    for item in os.listdir(content_dir):
+        content_item_path = os.path.join(content_dir, item)
+        public_item_path = os.path.join(public_dir, item)
+
+        if os.path.isdir(content_item_path):
+            generate_pages_recursive(content_item_path, template_path, public_item_path)
+        elif os.path.isfile(content_item_path) and item.endswith('.md'):
+            dest_html_path = os.path.splitext(public_item_path)[0] + '.html'
+            generate_page(content_item_path, template_path, dest_html_path)
+        else:
+            pass
 
 
 
 def main():
-    src_dir = 'static'
-    dest_dir = 'public'
-    template = 'template.html'
+    src_dir = "static"
+    dest_dir = "public"
+    template = "template.html"
     clean_destination(dest_dir)
     copy_directory(src_dir, dest_dir)
     #alternatively we have
     #shutil.copytree(src_dir, dest_dir)
-    src ="content/index.md"
-    dest="public/index.html"
+    src ="content"
+    dest="public"
     print("Copy operation completed successfully.")
-    generate_page(src, template, dest)
+    generate_pages_recursive(src, template, dest)
 
 if __name__ == '__main__':
     main()

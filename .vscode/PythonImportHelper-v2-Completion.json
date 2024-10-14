@@ -16,6 +16,120 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextNode",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextNode",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_node_to_html_node",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "LeafNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "ParentNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
         "label": "unittest",
         "kind": 6,
         "isExtraImport": true,
@@ -25,12 +139,83 @@
         "documentation": {}
     },
     {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "HTMLNode",
         "kind": 6,
         "importPath": "src.htmlnode",
         "description": "src.htmlnode",
-        "peekOfCode": "class HTMLNode:\n    def __init__(self, tag:str=None, value:str=None, children:list =None, props:dict=None) -> None:\n        self.tag = tag\n        self.value = value\n        self.children = children\n        self.props = props\n    def __eq__(self, other: object) -> bool:\n            return (self.tag == other.tag and\n            self.value == other.value and\n            self.children == other.children and",
+        "peekOfCode": "class HTMLNode:\n    def __init__(self, tag:str=None, value:str=None, children:list =None, props:dict=None) -> None:\n        self.tag = tag\n        self.value = value\n        self.children = children\n        self.props = props\n    def __eq__(self, other: object) -> bool:\n        if not isinstance(other, HTMLNode):\n            return False\n        return (self.tag == other.tag and",
         "detail": "src.htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "ParentNode",
+        "kind": 6,
+        "importPath": "src.htmlnode",
+        "description": "src.htmlnode",
+        "peekOfCode": "class ParentNode(HTMLNode):\n    def __init__(self, tag:str, children:list,props:dict=None) -> None:\n        if children is None:\n            raise ValueError(\"children is required\")\n        super().__init__(tag=tag, value=None, children=children, props=props)\n    def __repr__(self) -> str:\n        return f\"ParentNode({self.tag}, children: {self.children}, {self.props})\"\n    def to_html(self):\n        if self.tag is None:\n            raise ValueError(\"tag is required\")",
+        "detail": "src.htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "LeafNode",
+        "kind": 6,
+        "importPath": "src.htmlnode",
+        "description": "src.htmlnode",
+        "peekOfCode": "class LeafNode(HTMLNode):\n    def __init__(self, tag:str,value:str, props:dict=None) -> None:\n        if value is None:\n            raise ValueError(\"value is required\")\n        super().__init__(tag=tag, value=value, children=None, props=props)\n    def __repr__(self) -> str:\n        return f\"LeafNode({self.tag}, {self.value}, {self.props})\"\n    def to_html(self):\n        if self.value is None:\n            raise ValueError(\"value is required\")",
+        "detail": "src.htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "clean_destination",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def clean_destination(dest_dir):\n    if os.path.exists(dest_dir):\n        print(f\"deleting directory: {dest_dir}\")\n        shutil.rmtree(dest_dir)\ndef copy_directory(src_dir, dest_dir):\n    if not os.path.exists(dest_dir):\n        os.mkdir(dest_dir)\n    for item in os.listdir(src_dir):\n        src_path = os.path.join(src_dir, item)\n        dest_path = os.path.join(dest_dir, item)",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "copy_directory",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def copy_directory(src_dir, dest_dir):\n    if not os.path.exists(dest_dir):\n        os.mkdir(dest_dir)\n    for item in os.listdir(src_dir):\n        src_path = os.path.join(src_dir, item)\n        dest_path = os.path.join(dest_dir, item)\n        if os.path.isfile(src_path):\n            shutil.copy(src_path, dest_path)\n            print(f\"Copied file: {dest_path}\")\n        elif os.path.isdir(src_path):",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "extract_title",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def extract_title(markdown):\n    lines = markdown.split('\\n')\n    for line in lines:\n        if line.startswith('# '):\n            return line[2:].strip()\n    raise Exception(\"H1 heading required\")\ndef generate_page(fro, template, to):\n    print(f\"Generating page from {fro} to {to} using {template}.\")\n    with open(fro, 'r', encoding='utf-8') as f:\n        markdown_content = f.read()",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "generate_page",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def generate_page(fro, template, to):\n    print(f\"Generating page from {fro} to {to} using {template}.\")\n    with open(fro, 'r', encoding='utf-8') as f:\n        markdown_content = f.read()\n    with open(template, 'r', encoding='utf-8') as f:\n        template_content = f.read()\n    html_node = markdown_to_html_node(markdown_content)\n    html_content = html_node.to_html()\n    title = extract_title(markdown_content)\n    full_html = template_content.replace('{{ Title }}', title).replace('{{ Content }}', html_content)",
+        "detail": "src.main",
         "documentation": {}
     },
     {
@@ -38,8 +223,134 @@
         "kind": 2,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "def main():\n    node = TextNode(\"This is a text node\", text_type_bold, \"https://www.boot.dev\")\n    print(node)\nmain()",
+        "peekOfCode": "def main():\n    src_dir = \"static\"\n    dest_dir = \"public\"\n    template = \"template.html\"\n    clean_destination(dest_dir)\n    copy_directory(src_dir, dest_dir)\n    #alternatively we have\n    #shutil.copytree(src_dir, dest_dir)\n    src =\"content/index.md\"\n    dest=\"public/index.html\"",
         "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "TestTextToTextNodes",
+        "kind": 6,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "class TestTextToTextNodes(unittest.TestCase):\n    def test_plain_text(self):\n        text = \"This is plain text\"\n        expected_nodes = [\n            TextNode(\"This is plain text\", TextType.TEXT)\n        ]\n        result_nodes = text_to_textnodes(text)\n        self.assertListEqual(expected_nodes, result_nodes)\n    def test_bold_text(self):\n        text = \"This is **bold** text\"",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "TestMarkdownToHTML",
+        "kind": 6,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "class TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line\n* This is a list\n* with items\n\"\"\"\n        blocks = markdown_to_blocks(md)",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_paragraph",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_paragraph = \"paragraph\"\nblock_type_heading = \"heading\"\nblock_type_code = \"code\"\nblock_type_quote = \"quote\"\nblock_type_olist = \"ordered_list\"\nblock_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_heading",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_heading = \"heading\"\nblock_type_code = \"code\"\nblock_type_quote = \"quote\"\nblock_type_olist = \"ordered_list\"\nblock_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_code",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_code = \"code\"\nblock_type_quote = \"quote\"\nblock_type_olist = \"ordered_list\"\nblock_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_quote",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_quote = \"quote\"\nblock_type_olist = \"ordered_list\"\nblock_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line\n* This is a list",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_olist",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_olist = \"ordered_list\"\nblock_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line\n* This is a list\n* with items",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "block_type_ulist",
+        "kind": 5,
+        "importPath": "src.test_conversion",
+        "description": "src.test_conversion",
+        "peekOfCode": "block_type_ulist = \"unordered_list\"\nclass TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line\n* This is a list\n* with items\n\"\"\"",
+        "detail": "src.test_conversion",
+        "documentation": {}
+    },
+    {
+        "label": "TestMarkdownExtraction",
+        "kind": 6,
+        "importPath": "src.test_extraction",
+        "description": "src.test_extraction",
+        "peekOfCode": "class TestMarkdownExtraction(unittest.TestCase):\n    def test_extract_markdown_images_single(self):\n        text = \"Here is an image: ![alt text](https://example.com/image.jpg)\"\n        expected = [(\"alt text\", \"https://example.com/image.jpg\")]\n        self.assertEqual(extract_markdown_images(text), expected)\n    def test_extract_markdown_images_multiple(self):\n        text = \"Images: ![image1](https://example.com/img1.jpg) and ![image2](https://example.com/img2.jpg)\"\n        expected = [\n            (\"image1\", \"https://example.com/img1.jpg\"),\n            (\"image2\", \"https://example.com/img2.jpg\")",
+        "detail": "src.test_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "TestMarkdownToBlocks",
+        "kind": 6,
+        "importPath": "src.test_extraction",
+        "description": "src.test_extraction",
+        "peekOfCode": "class TestMarkdownToBlocks(unittest.TestCase):\n    def test_single_paragraph(self):\n        markdown = \"This is a single paragraph.\"\n        expected_blocks = [\"This is a single paragraph.\"]\n        result = markdown_to_blocks(markdown)\n        self.assertListEqual(expected_blocks, result)\n    def test_multiple_paragraphs(self):\n        markdown = \"\"\"This is the first paragraph.\nThis is the second paragraph.\"\"\"\n        expected_blocks = [",
+        "detail": "src.test_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "TestMarkdownToHTML",
+        "kind": 6,
+        "importPath": "src.test_extraction",
+        "description": "src.test_extraction",
+        "peekOfCode": "class TestMarkdownToHTML(unittest.TestCase):\n    def test_markdown_to_blocks(self):\n        md = \"\"\"\nThis is **bolded** paragraph\nThis is another paragraph with *italic* text and `code` here\nThis is the same paragraph on a new line\n* This is a list\n* with items\n\"\"\"\n        blocks = markdown_to_blocks(md)",
+        "detail": "src.test_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "TestBlockToBlockType",
+        "kind": 6,
+        "importPath": "src.test_extraction",
+        "description": "src.test_extraction",
+        "peekOfCode": "class TestBlockToBlockType(unittest.TestCase):\n    def test_heading(self):\n        block = \"# This is a heading\"\n        self.assertEqual(block_to_block_type(block), \"heading\")\n        block = \"## This is a level 2 heading\"\n        self.assertEqual(block_to_block_type(block), \"heading\")\n        block = \"###### This is a level 6 heading\"\n        self.assertEqual(block_to_block_type(block), \"heading\")\n    def test_code_block(self):\n        block = \"```\\nprint('Hello, World!')\\n```\"",
+        "detail": "src.test_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "TestHTMLNode",
+        "kind": 6,
+        "importPath": "src.test_htmlnode",
+        "description": "src.test_htmlnode",
+        "peekOfCode": "class TestHTMLNode(unittest.TestCase):\n    def test_to_html_props(self):\n        node = HTMLNode(\n            \"div\",\n            \"Hello, world!\",\n            None,\n            {\"class\": \"greeting\", \"href\": \"https://boot.dev\"},\n        )\n        self.assertEqual(\n            node.props_to_html(),",
+        "detail": "src.test_htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "TestInlineMarkdown",
+        "kind": 6,
+        "importPath": "src.test_inline_markdown",
+        "description": "src.test_inline_markdown",
+        "peekOfCode": "class TestInlineMarkdown(unittest.TestCase):\n    def test_delim_bold(self):\n        node = TextNode(\"This is text with a **bolded** word\", TextType.TEXT)\n        new_nodes = split_nodes_delimiter([node], \"**\", TextType.BOLD)\n        self.assertListEqual(\n            [\n                TextNode(\"This is text with a \", TextType.TEXT),\n                TextNode(\"bolded\", TextType.BOLD),\n                TextNode(\" word\", TextType.TEXT),\n            ],",
+        "detail": "src.test_inline_markdown",
         "documentation": {}
     },
     {
@@ -47,8 +358,26 @@
         "kind": 6,
         "importPath": "src.test_textnode",
         "description": "src.test_textnode",
-        "peekOfCode": "class TestTextNode(unittest.TestCase):\n    def test_eq(self):\n        node = TextNode(\"This is a text node\", \"bold\")\n        node2 = TextNode(\"This is a text node\", \"bold\")\n        self.assertEqual(node, node2)\n    def test_nodes_with_identical_properties_are_equal(self):\n        # Arrange\n        text = 'Sample text'\n        text_type = 'bold'\n        url = 'http://example.com'",
+        "peekOfCode": "class TestTextNode(unittest.TestCase):\n    def test_eq(self):\n        node = TextNode(\"This is a text node\", TextType.TEXT)\n        node2 = TextNode(\"This is a text node\", TextType.TEXT)\n        self.assertEqual(node, node2)\n    def test_eq_false(self):\n        node = TextNode(\"This is a text node\", TextType.TEXT)\n        node2 = TextNode(\"This is a text node\", TextType.BOLD)\n        self.assertNotEqual(node, node2)\n    def test_eq_false2(self):",
         "detail": "src.test_textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TestTextNodeToHTMLNode",
+        "kind": 6,
+        "importPath": "src.test_textnode",
+        "description": "src.test_textnode",
+        "peekOfCode": "class TestTextNodeToHTMLNode(unittest.TestCase):\n    def test_text(self):\n        node = TextNode(\"This is a text node\", TextType.TEXT)\n        html_node = text_node_to_html_node(node)\n        self.assertEqual(html_node.tag, None)\n        self.assertEqual(html_node.value, \"This is a text node\")\n    def test_image(self):\n        node = TextNode(\"This is an image\", TextType.IMAGE, \"https://www.boot.dev\")\n        html_node = text_node_to_html_node(node)\n        self.assertEqual(html_node.tag, \"img\")",
+        "detail": "src.test_textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "kind": 6,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "class TextType(Enum):\n    TEXT = \"text\"\n    BOLD = \"bold\"\n    ITALIC = \"italic\"\n    CODE = \"code\"\n    LINK = \"link\"\n    IMAGE = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT",
+        "detail": "src.textnode",
         "documentation": {}
     },
     {
@@ -56,61 +385,97 @@
         "kind": 6,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "class TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:\n        return f\"TextNode({self.text}, {self.text_type}, {self.url})\"",
+        "peekOfCode": "class TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:\n        return f\"TextNode({self.text}, {self.text_type}, {self.url})\"\ndef text_node_to_html_node(text_node: TextNode):",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_text",
-        "kind": 5,
+        "label": "text_node_to_html_node",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_text = \"text\"\ntext_type_bold = \"bold\"\ntext_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE",
+        "peekOfCode": "def text_node_to_html_node(text_node: TextNode):\n    match text_node.text_type:\n        case TextType.TEXT:\n            return LeafNode(tag=None, value=text_node.text)\n        case TextType.BOLD:\n            return LeafNode(tag=\"b\", value=text_node.text)\n        case TextType.ITALIC:\n            return LeafNode(tag=\"i\", value=text_node.text)\n        case TextType.CODE:\n            return LeafNode(tag=\"code\", value=text_node.text)",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_bold",
-        "kind": 5,
+        "label": "split_nodes_delimiter",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_bold = \"bold\"\ntext_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL",
+        "peekOfCode": "def split_nodes_delimiter(old_nodes, delimiter, text_type):\n    new =[]\n    for node in old_nodes:\n        if node.text_type != TextType.TEXT:\n            new.append(node)\n        else:\n            parts = node.text.split(delimiter)\n            is_delimited = False\n            if len(parts) % 2 == 0:\n                raise Exception(\"Unmatched delimiter found in text.\")",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_italic",
-        "kind": 5,
+        "label": "extract_markdown_images",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_italic = \"italic\"\ntext_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:",
+        "peekOfCode": "def extract_markdown_images(text):\n    # Regex to match markdown image format ![alt](url)\n    pattern = r\"!\\[([^\\[\\]]*)\\]\\(([^\\(\\)]*)\\)\"\n    return re.findall(pattern, text)\ndef extract_markdown_links(text):\n    # Regex to match markdown link format [anchor](url), but exclude images\n    pattern = r\"(?<!!)\\[([^\\[\\]]*)\\]\\(([^\\(\\)]*)\\)\"\n    return re.findall(pattern, text)\ndef split_nodes_image(old_nodes):\n    new =[]",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_code",
-        "kind": 5,
+        "label": "extract_markdown_links",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_code = \"code\"\ntext_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url",
+        "peekOfCode": "def extract_markdown_links(text):\n    # Regex to match markdown link format [anchor](url), but exclude images\n    pattern = r\"(?<!!)\\[([^\\[\\]]*)\\]\\(([^\\(\\)]*)\\)\"\n    return re.findall(pattern, text)\ndef split_nodes_image(old_nodes):\n    new =[]\n    for node in old_nodes:\n        text = node.text\n        images = extract_markdown_images(text)\n        if not images:",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_link",
-        "kind": 5,
+        "label": "split_nodes_image",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_link = \"link\"\ntext_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:",
+        "peekOfCode": "def split_nodes_image(old_nodes):\n    new =[]\n    for node in old_nodes:\n        text = node.text\n        images = extract_markdown_images(text)\n        if not images:\n            new.append(node)\n            continue\n        for alt, url, in images:\n            secs = text.split(f\"![{alt}]({url})\", 1)",
         "detail": "src.textnode",
         "documentation": {}
     },
     {
-        "label": "text_type_image",
-        "kind": 5,
+        "label": "split_nodes_link",
+        "kind": 2,
         "importPath": "src.textnode",
         "description": "src.textnode",
-        "peekOfCode": "text_type_image = \"image\"\nclass TextNode:\n    def __init__(self, TEXT, TEXT_TYPE, URL=None) -> None:\n        self.text = TEXT\n        self.text_type = TEXT_TYPE\n        self.url = URL\n    def __eq__(self, value: object) -> bool:\n        return self.text == value.text and self.text_type == value.text_type and self.url ==value.url\n    def __repr__(self) -> str:\n        return f\"TextNode({self.text}, {self.text_type}, {self.url})\"",
+        "peekOfCode": "def split_nodes_link(old_nodes):\n    new =[]\n    for node in old_nodes:\n        text = node.text\n        links = extract_markdown_links(text)\n        if not links:\n            new.append(node)\n            continue\n        for anchor, url, in links:\n            secs = text.split(f\"[{anchor}]({url})\", 1)",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_to_textnodes",
+        "kind": 2,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "def text_to_textnodes(text):\n    nodes = [TextNode(text, TextType.TEXT)]\n    nodes = split_nodes_image(nodes)\n    nodes = split_nodes_link(nodes)\n    nodes = split_nodes_delimiter(nodes, \"**\", TextType.BOLD)\n    nodes = split_nodes_delimiter(nodes, \"*\", TextType.ITALIC)\n    nodes = split_nodes_delimiter(nodes, \"`\", TextType.CODE)\n    return nodes\ndef markdown_to_blocks(markdown):\n    blocks = markdown.split(\"\\n\\n\")",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "markdown_to_blocks",
+        "kind": 2,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "def markdown_to_blocks(markdown):\n    blocks = markdown.split(\"\\n\\n\")\n    blocks = [block.strip() for block in blocks]\n    blocks = [block for block in blocks if block]\n    return blocks\ndef block_to_block_type(block):\n    if block.startswith('# '):\n        return 'heading'\n    if any(block.startswith(f'{\"#\"*i} ') for i in range(2, 7)):\n        return 'heading'",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "block_to_block_type",
+        "kind": 2,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "def block_to_block_type(block):\n    if block.startswith('# '):\n        return 'heading'\n    if any(block.startswith(f'{\"#\"*i} ') for i in range(2, 7)):\n        return 'heading'\n    if block.startswith('```') and block.endswith('```'):\n        return 'code'\n    if all(line.strip().startswith('>') for line in block.split('\\n')):\n        return 'quote'\n    if all(line.strip().startswith(('* ', '- ')) for line in block.split('\\n')):",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "markdown_to_html_node",
+        "kind": 2,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "def markdown_to_html_node(markdown):\n    blocks = markdown_to_blocks(markdown)\n    nodes=[]\n    for block in blocks:\n        type = block_to_block_type(block)\n        match type:\n            case \"paragraph\":\n                text = text_to_textnodes(block)\n                html= [text_node_to_html_node(tn) for tn in text]\n                p = ParentNode('p', html)",
         "detail": "src.textnode",
         "documentation": {}
     }
