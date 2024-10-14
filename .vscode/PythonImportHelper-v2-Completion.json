@@ -112,6 +112,14 @@
         "documentation": {}
     },
     {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -219,11 +227,20 @@
         "documentation": {}
     },
     {
+        "label": "generate_pages_recursive",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):\n    for filename in os.listdir(dir_path_content):\n        from_path = os.path.join(dir_path_content, filename)\n        dest_path = os.path.join(dest_dir_path, filename)\n        if os.path.isfile(from_path):\n            dest_path = Path(dest_path).with_suffix(\".html\")\n            generate_page(from_path, template_path, dest_path)\n        else:\n            generate_pages_recursive(from_path, template_path, dest_path)\ndef main():",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "def main():\n    src_dir = \"static\"\n    dest_dir = \"public\"\n    template = \"template.html\"\n    clean_destination(dest_dir)\n    copy_directory(src_dir, dest_dir)\n    #alternatively we have\n    #shutil.copytree(src_dir, dest_dir)\n    src =\"content/index.md\"\n    dest=\"public/index.html\"",
+        "peekOfCode": "def main():\n    src_dir = \"static\"\n    dest_dir = \"public\"\n    template = \"template.html\"\n    clean_destination(dest_dir)\n    copy_directory(src_dir, dest_dir)\n    #alternatively we have\n    #shutil.copytree(src_dir, dest_dir)\n    src =\"content\"\n    dest=\"public\"",
         "detail": "src.main",
         "documentation": {}
     },
